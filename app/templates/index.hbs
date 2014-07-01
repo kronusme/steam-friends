@@ -1,0 +1,52 @@
+<div class="alert alert-dismissable alert-warning">
+  Friend-list for users with "not-public" profiles can't be loaded.
+  So, some groups may not be fully completed.
+</div>
+
+<div class="alert alert-dismissable alert-warning">
+  If user has too much friends, graph won't be very useful.
+</div>
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="api-key" class="col-sm-2 control-label">API-key</label>
+    <div class="col-sm-6 controls">
+      {{view view.apiKeyView id="api-key" classBinding="isValid::error :form-control" valueBinding="controller.apiKey" placeholder="Enter your API-key"}} <small><a target="_blank" href="http://steamcommunity.com/dev/apikey">Get my key</a></small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="steamid" class="col-sm-2 control-label">SteamID</label>
+    <div class="col-sm-3 controls">
+      {{view view.steamIdView id="steamid" classBinding="isValid::error :form-control" valueBinding="controller.steamid" placeholder="Enter Steam ID"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      {{#bs-button disabledBinding="view.submitDisabled" type="primary" small="true" clicked="submit"}}Get it!{{/bs-button}}
+    </div>
+  </div>
+</form>
+
+{{#unless controller.loadingComplete}}
+  {{bs-progress progressBinding="controller.progress" stripped=true animated=true}}
+{{/unless}}
+
+{{#if controller.formattedGroups.length}}
+  <h4>Friend groups ({{controller.formattedGroups.length}})</h4>
+  <table class="table table-striped table-bordered">
+    {{#each group in controller.formattedGroups}}
+      <tr><td>
+        {{#each user in group}}
+          <img {{bind-attr src="user.avatar"}} />&nbsp;<a {{bind-attr href="user.profileurl"}}>{{user.personaname}}</a>&nbsp;
+        {{/each}}
+      </td></tr>
+    {{/each}}
+  </table>
+{{/if}}
+
+<div id="graph"></div>
+
+<h4>Work Log</h4>
+<pre class="pre-scrollable">
+  {{#each message in controller.workLog}}{{message}}<br />{{/each}}
+</pre>

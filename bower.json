@@ -1,0 +1,17 @@
+{
+  "name": "ember-and-friends",
+  "version": "0.0.0",
+  "dependencies": {
+    "ember": "1.5.0",
+    "handlebars": "1.2.1",
+    "ember-data": "1.0.0-beta.7",
+    "bootstrap": ">3.0",
+    "ember-addons.bs_for_ember": ">=0.7",
+    "ember-forms": "master",
+    "ember-validations": "master",
+    "sigma": "1.0.2"
+  },
+  "devDependencies": {
+    "ember-mocha-adapter": "0.1.2"
+  }
+}

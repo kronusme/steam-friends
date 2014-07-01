@@ -1,0 +1,4 @@
+EmberAndFriends.Router.map(function () {
+  
+
+});

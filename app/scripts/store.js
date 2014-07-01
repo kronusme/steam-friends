@@ -1,0 +1,1 @@
+EmberAndFriends.ApplicationAdapter = DS.FixtureAdapter;
