@@ -4,7 +4,7 @@
 
 * [npm](http://nodejs.org/)
 * `npm install`
-* `grunt install`
+* `bower install`
 * some web-server with [php](http://php.net/)
 
 ## Usage
